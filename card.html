@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Day Card</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: Solitreo;
+      color: #f40b4a;
+      font-size: 3vw;
+    }
+
+    body {
+      background: #fee2e9;
+      font-family: "Pangolin", cursive;
+      font-size: 1.5vw;
+    }
+
+    .first {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      max-width: 100%;
+    }
+
+    .envelope {
+      position: relative;
+      background: #f980a1;
+      height: 30vw;
+      max-height: 200px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .card {
+      position: absolute;
+      background-image: url(./assests/cardletter.png);
+      background-size: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 25vw;
+      max-height: 500px;
+      width: 90%;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 5%;
+      top: 0;
+      animation: slide-rev 0.2s ease-out;
+    }
+
+    .message {
+      position: absolute;
+      top: 5vw;
+    }
+
+    .cover {
+      position: absolute;
+      height: 0;
+      width: 0;
+      border-bottom: 15vw solid #fba7bd;
+      border-left: 24vw solid transparent;
+      border-right: 24vw solid transparent;
+      top: 15vw;
+      z-index: 3;
+    }
+
+    .cover::after {
+      position: absolute;
+      content: "";
+      border-left: 24.5vw solid #fcbbcc;
+      border-bottom: 15vw solid transparent;
+      border-top: 15vw solid transparent;
+      top: -15vw;
+      left: -24vw;
+    }
+
+    .cover::before {
+      position: absolute;
+      content: "";
+      border-right: 24.5vw solid #fcbbcc;
+      border-bottom: 15vw solid transparent;
+      border-top: 15vw solid transparent;
+      top: -15vw;
+      left: -0.5vw;
+    }
+
+    .lid {
+      position: absolute;
+      height: 0;
+      width: 0;
+      border-top: 15vw solid #f980a1;
+      border-left: 24vw solid transparent;
+      border-right: 24vw solid transparent;
+      top: 0;
+      transform-origin: top;
+      animation: open-rev 2s;
+    }
+
+    .container:hover .lid {
+      animation: open 0.5s;
+      animation-fill-mode: forwards;
+    }
+
+    .container:hover .card {
+      animation: slide 0.2s;
+      animation-delay: 0.5s;
+      animation-fill-mode: forwards;
+    }
+
+    .shadow {
+      position: relative;
+      top: 3vw;
+      border-radius: 50%;
+      opacity: 0.7;
+      height: 2vw;
+      width: 48vw;
+      max-height: 50px;
+      max-width: 100%;
+      background: #e8c5d0;
+    }
+
+    .heart {
+      position: relative;
+      width: 5vw;
+      height: 4vw;
+      top: 7vw;
+      left: -1vw;
+    }
+
+    .heart:before,
+    .heart:after {
+      position: absolute;
+      content: "";
+      left: 2.5vw;
+      top: 7vw;
+      width: 2.5vw;
+      height: 4vw;
+      background: #f40b4a;
+      border-radius: 2.5vw 2.5vw 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    .heart:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    @keyframes open {
+      100% {
+        transform: rotatex(180deg);
+      }
+    }
+
+    @keyframes slide {
+      100% {
+        transform: translatey(-15vw);
+        z-index: 2;
+      }
+    }
+
+    @keyframes open-rev {
+      from {
+        transform: rotatex(-180deg);
+      }
+    }
+
+    @keyframes slide-rev {
+      from {
+        transform: translatey(-15vw);
+      }
+    }
+
+    .floating-heart {
+      position: fixed;
+      top: -10vh;
+      pointer-events: none;
+      animation: float-down linear forwards;
+    }
+
+    @keyframes float-down {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="first">
+    <div class="C">
+      <div class="container">
+        <div class="envelope"></div>
+        <a href="letter.html">
+          <div class="card"></div>
+        </a>
+        <div class="cover"></div>
+        <div class="lid"></div>
+        <div class="shadow"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.innerHTML = "💖";
+      heart.classList.add("floating-heart");
+
+      // Random horizontal position
+      heart.style.left = Math.random() * 100 + "vw";
+
+      // Random size
+      const size = Math.random() * 20 + 15;
+      heart.style.fontSize = size + "px";
+
+      // Random animation duration
+      const duration = Math.random() * 3 + 3;
+      heart.style.animationDuration = duration + "s";
+
+      document.body.appendChild(heart);
+
+      // Remove after animation
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+    // Create hearts continuously
+    setInterval(createHeart, 300);
+  </script>
+</body>
+
+</html>

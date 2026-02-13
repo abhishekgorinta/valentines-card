@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #fbcfe8, #f472b6, #fb7185);
+}
+
+#card {
+  background: rgba(255, 255, 255, 0.9);
+  background-image: url(./assests/main.png);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  padding: 20px;
+  border-radius: 25px;
+  text-align: center;
+  width: 350px;
+  height: 450px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+  
+}
+
+#teaseText {
+     margin-top: 400px;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.buttons {
+   
+  position: relative;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+#yesBtn {
+  background-color: #ec4899;
+  color: white;
+}
+
+#yesBtn:hover {
+  background-color: #db2777;
+  transform: scale(1.18);
+}
+
+#noBtn {
+  background-color: #e5e7eb;
+  color: #333;
+  /* position: absolute; */
+  left: 150px;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+/* Floating Hearts */
+
+.floating-heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp linear forwards;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
