@@ -18,7 +18,11 @@ https://abhishekgorinta.github.io/valentines-card/
 - 📱 Fully Responsive Design
 
 ---
-
+## 📸 Screenshots
+![First Page](assests/page1.png)
+![card page](assests/page2.png)
+![letter page](assests/page3.png)
+---
 ## 🛠️ Technologies Used
 
 - HTML5
